@@ -1520,12 +1520,12 @@
     "coeficient": 4.4
   },
   {
-    "name": "Město Albrechtice",
+    "name": "Albrechtice",
     "id": 305,
     "coeficient": 2.1
   },
   {
-    "name": "Město Touškov",
+    "name": "Touškov",
     "id": 306,
     "coeficient": 2.1
   },
@@ -18760,7 +18760,7 @@
     "coeficient": 1.7
   },
   {
-    "name": "Město Libavá",
+    "name": "Libavá",
     "id": 3752,
     "coeficient": 4.6
   },
@@ -31815,7 +31815,7 @@
     "coeficient": 1.4
   },
   {
-    "name": "MĚSTO LIBEREC",
+    "name": "LIBEREC",
     "id": 6363,
     "coeficient": 3.2
   },
