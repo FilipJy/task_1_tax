@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "test",
+    "surname": "test",
+    "birth_date": "test",
+    "email": "test",
+    "phone_number": "test",
+    "estates": [
+      {
+        "locality": "Liberec",
+        "type": "les",
+        "area": 90.0,
+        "tax": 101
+      },
+      {
+        "locality": "Vrchlabí",
+        "type": "zahrada",
+        "area": 300.0,
+        "tax": 1920
+      }
+    ],
+    "residences": [
+      {
+        "locality": "Jablonec nad Nisou",
+        "area": 99.0,
+        "tax": 11880
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "ksk",
+    "surname": "das",
+    "birth_date": "fasg",
+    "email": "gsa",
+    "phone_number": "fsaf",
+    "estates": [
+      {
+        "locality": "Brno",
+        "type": "les",
+        "area": 244.0,
+        "tax": 419
+      }
+    ]
+  }
+]

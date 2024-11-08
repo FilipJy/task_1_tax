@@ -55,12 +55,13 @@ def calculate_estate_tax():
         tax = estate.calculate_tax()
         clear_terminal()
         print(f"\n{estate}")
-        print(f"Vypočtená daň: {tax} Kč")
+        print(f"\n Vypočtená daň: {tax} Kč \n")
     except ValueError as e:
         print(f"Chyba při výpočtu daně: {e}")
 
     save_choice = input("Chcete uložit tento pozemek k majiteli? (ano/ne): ").strip().lower()
     if save_choice == "ano":
+        print_owners()
         owner_id = input("Zadejte ID majitele: ").strip()
         if os.path.exists("registr.json"):
             with open("registr.json", "r", encoding="utf-8") as file:
@@ -119,7 +120,7 @@ def calculate_residence_tax():
     tax = residence.calculate_tax()
     clear_terminal()
     print(f"\n{residence}")
-    print(f"Vypočtená daň: {tax} Kč")
+    print(f"\n Vypočtená daň: {tax} Kč \n")
 
     save_choice = input("Chcete uložit tuto stavbu k majiteli? (ano/ne): ").strip().lower()
     if save_choice == "ano":
@@ -153,7 +154,7 @@ def calculate_residence_tax():
 
 def calculate_all_tax():
     clear_terminal()
-    print("\n --- Výpočet daně - hromadné ---")
+    print("\n --- Výpočet daně - hromadné ---\n")
 
     if os.path.exists("registr.json"):
         with open("registr.json", "r", encoding="utf-8") as file:
@@ -183,7 +184,7 @@ def calculate_all_tax():
 def tax():
     clear_terminal()
     while True:
-        choice = input("Jakou daň chcete spočítat? (pozemek, stavba, hromadně nebo 'konec' pro ukončení)\n: ").strip().lower()
+        choice = input("\n Jakou daň chcete spočítat? (pozemek, stavba, hromadně nebo 'konec' pro ukončení)\n: ").strip().lower()
         if choice == "pozemek":
             calculate_estate_tax()
         elif choice == "stavba":
@@ -199,7 +200,7 @@ def tax():
 
 def new_owner():
     clear_terminal()
-    print("\n--- Zápis nového majitele ---")
+    print("\n--- Zápis nového majitele ---\n")
 
     #základní info
     name = input("Zadejte jméno majitele: ").strip()
@@ -209,7 +210,8 @@ def new_owner():
     phone_number = input("Zadejte telefonní číslo majitele: ").strip()
 
     new_owner = owner(name, surname, birth_date, email, phone_number,)
-    print(f"Nový majitel: {new_owner}")
+    clear_terminal()
+    print(f"\nNový majitel: {new_owner}\n")
 
     #uložení
     save_choice = input("Chcete uložit nového majitele? (ano/ne): ").strip().lower()
@@ -257,7 +259,7 @@ def new_owner():
             json.dump(owners, file, ensure_ascii=False, indent=2)
 
         clear_terminal()
-        print(f"Majitel byl úspěšně uložen a bylo mu přideleno ID: {unique_id}.")
+        print(f"Majitel byl úspěšně uložen a bylo mu přideleno ID: {unique_id}.\n")
     else:
         print("Majitel nebyl uložen.")
 
@@ -289,14 +291,14 @@ def print_owners():
                 print(f"\nID: {owner_data['id']}")
                 print(owner_instance, "\n")
         else:
-            print("V registru nejsou žádní majitelé.")
+            print("\nV registru nejsou žádní majitelé.\n")
     else: 
         owner_id = int(input("Zadejte ID majitele, kterého chcete vypsat: "))
         owner_data = next((owner for owner in owners if owner["id"] == owner_id), None)
         if owner_data:
             owner_instance = owner(owner_data["name"], owner_data["surname"], owner_data["birth_date"], owner_data["email"], owner_data["phone_number"])
             clear_terminal()
-            print(owner_instance, "\n")
+            print("\n",owner_instance)
             #výpis majetku, pokud je
             if "estates" in owner_data:
                 print("\nPozemky:")
@@ -333,9 +335,9 @@ def edit_owner():
         owner_data = next((owner for owner in owners if owner["id"] == owner_id), None)
         if owner_data:
             clear_terminal()
-            print("\nSoučasné informace o majiteli:")
+            print("\nSoučasné informace o majiteli:\n")
             owner_instance = owner(owner_data["name"], owner_data["surname"], owner_data["birth_date"], owner_data["email"], owner_data["phone_number"])
-            print(owner_instance)
+            print(owner_instance,"\n")
 
             name = input("Zadejte nové jméno majitele (nechte prázdné pro ponechání původní hodnoty): ").strip()
             surname = input("Zadejte nové příjmení majitele (nechte prázdné pro ponechání původní hodnoty): ").strip()
@@ -402,9 +404,9 @@ def delete_owner():
 
 def open_registry():
     clear_terminal()
-    print("\n--- Vítejte v registru majetku ---")
+    print("\n--- Vítejte v registru majetku ---\n")
     while True:
-        choice = input("Co chcete udělat? \n(Napiště 'nový' pro zápis nového majitele, 'výpis' pro výpis všech majitelů a majetku, 'úprava' pro úpravu záznamu, 'smazat' pro smazání záznamu nebo 'konec' pro ukončení)\n: ").strip().lower()
+        choice = input("Co chcete udělat? \n\n(Napiště 'nový' pro zápis nového majitele, 'výpis' pro výpis všech majitelů a majetku, 'úprava' pro úpravu záznamu, 'smazat' pro smazání záznamu nebo 'konec' pro ukončení)\n: ").strip().lower()
         if choice == "nový":
             new_owner()
         elif choice == "výpis":
@@ -422,9 +424,9 @@ def clear_terminal():
 
 def main():
     clear_terminal()
-    print("Vítejte v aplikaci na výpočet daně.")
+    print("\nVítejte v aplikaci na výpočet daně.\n")
     while True:
-        choice = input("Co chcete udělat? \n(Napiště 'tax' pro výpočet daně, 'registr' pro zápis nového majitele nebo výpis či úpravu již existujícího záznamu, nebo 'konec' pro ukončení)\n: ").strip().lower()
+        choice = input("Co chcete udělat? \n\n(Napiště 'tax' pro výpočet daně, 'registr' pro zápis nového majitele nebo výpis či úpravu již existujícího záznamu, nebo 'konec' pro ukončení)\n: ").strip().lower()
         if choice == "tax":
             tax()
         elif choice == "registr":
