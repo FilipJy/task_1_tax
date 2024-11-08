@@ -1,0 +1,31 @@
+name: Check the Registry is Empty
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check_empty_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check if file is empty
+        run: |
+          FILE_PATH="registr.json"
+          if [ -f "$FILE_PATH" ] && [ -s "$FILE_PATH" ]; then
+            echo "❌ File '$FILE_PATH' is not empty. Please check the content." >&2
+            exit 1
+          elif [ -f "$FILE_PATH" ]; then
+            echo "✅ File '$FILE_PATH' is empty."
+          else
+            echo "⚠️ File '$FILE_PATH' does not exist. Please check the path." >&2
+            exit 1
+          fi
