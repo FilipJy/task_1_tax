@@ -1,6 +1,6 @@
 # Aplikace pro výpočet daně (úkol)
 
-Tato aplikace Vám umožní vypočítat daň pro pozemky a stavby. Součástí je také registr majitelů umožňující uložit a spravovat informace o majiteli a jejich majetku.
+Tato aplikace umožňuje vypočítat daň pro pozemky a stavby. Součástí je také registr majitelů umožňující uložit a spravovat informace o majiteli a jejich majetku.
 
 # Instalace a spuštění aplikace
 
